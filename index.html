@@ -528,25 +528,48 @@
     max-width: 640px;
   }
 
-  .wellness-img-row {
+/* 전체 이미지 영역을 묶는 컨테이너 */
+  .wellness-img-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 48px;
+    grid-template-columns: repeat(2, 1fr); /* PC에서는 동등하게 1:1 비율로 2열 배치 */
+    gap: 24px; /* 이미지 카드 사이의 여백 */
+    margin-top: 40px;
+    width: 100%;
   }
 
-  .wellness-img {
+  /* 각각의 동등한 이미지 카드 박스 */
+  .wellness-img-card {
+    width: 100%;
+    aspect-ratio: 16 / 10; /* 박스가 찌그러지지 않도록 세련된 가로 가로비 고정 */
+    overflow: hidden;
     background: #2A2A2A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
   }
 
-  .wellness-img.tall { height: 280px; }
-  .wellness-img.wide { height: 200px; }
+  /* 내부 이미지 요소 스타일 제어 */
+  .wellness-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 정해진 균등한 박스 안에 이미지가 꽉 차도록 채움 */
+    display: block;
+    transition: transform 0.3s ease; /* 호버 효과를 위한 부드러운 전환 */
+  }
 
+  /* 마우스를 올렸을 때 미세하게 확대되는 세련된 포트폴리오 효과 */
+  .wellness-img-card:hover img {
+    transform: scale(1.03);
+  }
+
+  /* 반응형 분기점: 화면 너비가 1024px 이하일 때 (태블릿 및 모바일) */
+  @media (max-width: 1024px) {
+    .wellness-img-container {
+      grid-template-columns: 1fr; /* 그리드를 1열로 변경하여 한칸씩 밑으로 떨어지게 만듦 */
+      gap: 16px; /* 모바일 환경에 맞게 간격 최적화 */
+    }
+    
+    .wellness-img-card {
+      aspect-ratio: 16 / 9; /* 모바일 화면 비율에 맞춰 최적의 황금비율 적용 */
+    }
+  }
   .img-label {
     font-size: 11px;
     letter-spacing: 0.1em;
@@ -1390,20 +1413,13 @@ body{
     <p>이러한 웰니스 문화를 선도하는 광화문 광장의 변화된 모습을 통해 내국인들뿐만 아니라 외국인들도 대한민국이 선도 중인 웰니스 문화를 여기서 만나볼 수 있습니다. 더불어 광화문 광장의 넓고 기다란 지형조건을 활용해 러닝 트랙이 형성됩니다. 러닝 트랙과 함께 자전거 도로, 도보가 명확하게 형성되며 보다 안정적인 보행환경을 형성하고, 많은 사람들이 다양한 방식으로 광화문 광장을 점유할 수 있게 됩니다.</p>
   </div>
 
- <div class="wellness-img-row">
-        <div class="wellness-img tall">
-      <div class="img-label img-label-light">이미지</div>
-      <span class="img-tag-en" style="color:#555;">gwanghwamun-wellness-shopping-mall-rendering</span>
+<div class="wellness-img-container">
+    <div class="wellness-img-card">
+      <img src="gwanghwamun-wellness-mall.png" alt="광화문 웰니스 복합 쇼핑몰 랜더링">
     </div>
     
-        <div>
-            <div class="wellness-img wide">
-        <img src="gwanghwamun-wellness-mall.png" alt="광화문 웰니스 복합 쇼핑몰 랜더링" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      
-            <div class="wellness-img wide" style="margin-top:20px; height:200px;">
-        <img src="gwanghwamun-running-track.png" alt="광화문 광장 러닝 트랙 가이드 맵" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
+    <div class="wellness-img-card">
+      <img src="gwanghwamun-running-track.png" alt="광화문 광장 러닝 트랙 가이드 맵">
     </div>
   </div>
 </section>
