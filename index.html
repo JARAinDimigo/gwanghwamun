@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광화문 광장 — 가장 아쉬웠던 도심 속 공간</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #C0392B;
+    --dark: #1A1A1A;
+    --mid: #555555;
+    --light: #AAAAAA;
+    --bg: #FFFFFF;
+    --bg2: #F7F7F7;
+    --border: #E0E0E0;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 64px;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 0.5px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-menu a:hover { color: var(--dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .hero-img-box {
+    position: absolute;
+    top: 64px; right: 0; bottom: 0;
+    width: 55%;
+    background: #D8D0C4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-img-box .img-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .img-tag-en {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #AAA;
+    font-family: var(--sans);
+    margin-top: 4px;
+    display: block;
+    text-align: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 360px;
+    margin-bottom: 40px;
+  }
+
+  .hero-team {
+    font-size: 11px;
+    color: var(--light);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+
+  /* SECTION COMMON */
+  section {
+    padding: 120px 60px;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 48px;
+  }
+
+  .section-title-sm {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--red);
+    margin-bottom: 48px;
+  }
+
+  /* HISTORY TIMELINE */
+  .history-section {
+    background: var(--bg);
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .timeline-item {
+    padding: 48px 40px;
+    border-bottom: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .timeline-item:nth-child(even) {
+    border-right: none;
+  }
+
+  .timeline-year {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  .timeline-period {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .timeline-img {
+    width: 100%;
+    height: 160px;
+    background: #E5E0D8;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* NOW SECTION */
+  .now-section {
+    background: var(--bg2);
+  }
+
+  .now-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .now-text p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .now-image-main {
+    width: 100%;
+    height: 400px;
+    background: #D8D5CF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .reform-list {
+    margin-top: 32px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .reform-item {
+    display: flex;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 0.5px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .reform-num {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--red);
+    font-weight: 300;
+    min-width: 28px;
+    line-height: 1.3;
+  }
+
+  .reform-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .reform-text strong {
+    display: block;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+
+  /* GOALS */
+  .goals-section {
+    background: var(--dark);
+  }
+
+  .goals-section .section-title {
+    color: #FFFFFF;
+  }
+
+  .goals-section .section-eyebrow {
+    color: var(--red);
+  }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #333;
+    border: 1px solid #333;
+    margin-top: 48px;
+  }
+
+  .goal-card {
+    background: var(--dark);
+    padding: 40px 32px;
+  }
+
+  .goal-icon {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .goal-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .goal-desc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.85;
+  }
+
+  /* PROPOSAL */
+  .proposal-section {
+    background: var(--bg);
+  }
+
+  /* 4분할 */
+  .quad-section {
+    background: var(--bg2);
+  }
+
+  .quad-img {
+    width: 100%;
+    height: 480px;
+    background: #DDDAD5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 0;
+  }
+
+  .sub-sections {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--border);
+    margin-top: 48px;
+  }
+
+  .sub-section-item {
+    padding: 32px 24px;
+    border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .sub-section-item:last-child { border-right: none; }
+
+  .sub-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .sub-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .sub-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  /* UNDERGROUND */
+  .underground-section {
+    background: var(--bg);
+  }
+
+  .underground-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .underground-text p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .img-box {
+    width: 100%;
+    background: #E0DDD8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .img-box-tall { height: 320px; }
+  .img-box-short { height: 220px; }
+  .img-box-mid { height: 260px; }
+
+  .img-box + .img-box { margin-top: 16px; }
+
+  /* SUNKEN */
+  .sunken-section {
+    background: var(--bg2);
+  }
+
+  /* GREEN */
+  .green-section {
+    background: var(--bg);
+  }
+
+  .green-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* CULTURE AXIS */
+  .culture-section {
+    background: #F0EDE8;
+  }
+
+  .culture-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  /* WELLNESS */
+  .wellness-section {
+    background: var(--dark);
+  }
+
+  .wellness-section .section-title { color: #fff; }
+  .wellness-section .section-eyebrow { color: var(--red); }
+  .wellness-section .divider { background: var(--red); }
+
+  .wellness-content p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+
+  .wellness-img-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .wellness-img {
+    background: #2A2A2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .wellness-img.tall { height: 280px; }
+  .wellness-img.wide { height: 200px; }
+
+  .img-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .img-label-dark { color: #666; }
+  .img-label-light { color: #AAA; }
+
+  /* VIDEO */
+  .video-section {
+    background: var(--bg2);
+    text-align: center;
+  }
+
+  .video-box {
+    width: 100%;
+    height: 480px;
+    background: #D5D2CC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .play-icon {
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid #999;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-icon::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #999;
+    margin-left: 4px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-left .footer-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .footer-team {
+    font-size: 12px;
+    color: var(--light);
+    line-height: 2;
+  }
+
+  .footer-right {
+    font-size: 11px;
+    color: var(--light);
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    section { padding: 80px 24px; }
+    .hero { padding: 0 24px 60px; }
+    .hero-title { font-size: 40px; }
+    .hero-img-box { display: none; }
+    .timeline { grid-template-columns: 1fr; }
+    .timeline-item { border-right: none; }
+    .now-grid, .underground-grid, .green-grid { grid-template-columns: 1fr; gap: 40px; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .sub-sections { grid-template-columns: 1fr 1fr; }
+    .culture-grid { grid-template-columns: 1fr; }
+    .wellness-img-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">광화문 광장</a>
+  <ul class="nav-menu">
+    <li><a href="#history">발자취</a></li>
+    <li><a href="#now">현재</a></li>
+    <li><a href="#goals">목표</a></li>
+    <li><a href="#proposal">제안</a></li>
+    <li><a href="#wellness">웰니스</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-img-box">
+    <div class="img-label img-label-dark">이미지</div>
+    <span class="img-tag-en">gwanghwamun-plaza-hero-aerial</span>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">도시개발 제안 · 2024</p>
+    <h1 class="hero-title">가장<br>아쉬웠던<br>도심 속<br>공간.<br>광장.</h1>
+    <p class="hero-subtitle">유럽의 광장에서 느끼는 낭만을 우리의 광장에서도 만날 수 있도록. 서울이라는 도시에 맞게, 사람들이 편히 쉬고 주변과 연결될 수 있는 광화문 광장을 제안합니다.</p>
+    <div class="hero-team">
+      21011027 김수겸 &nbsp;·&nbsp; 21011017 이현호 &nbsp;·&nbsp; 21011077 임신엽<br>
+      22011115 박진철 &nbsp;·&nbsp; 23011102 왕나경
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history-section" id="history">
+  <span class="section-eyebrow">01 — 광화문 광장의 발자취</span>
+  <h2 class="section-title">과거에서 현재까지</h2>
+  <div class="divider"></div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">조선</div>
+      <div class="timeline-period">육조거리 — 행정의 중심</div>
+      <div class="timeline-desc">조선시대 육조거리로 시작한 광화문 광장. 당시 관아들이 배치되었던 큰 길로, 행정적인 중심에 위치하였던 거리였다. 경복궁과 한양의 행정 심장부를 잇는 상징적 공간이었다.</div>
+      <div class="timeline-img">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-joseon-period-historical</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">일제<br>강점기</div>
+      <div class="timeline-period">광화문통 — 거리의 확장</div>
+      <div class="timeline-desc">조선총독부를 지으며 '광화문통(光化門通)'으로 변경되면서 거리를 확장하였다 (세종로의 원형). 축선을 강조하기 위해 도로 중앙에 은행나무를 일렬로 배치해 양방향을 분리하였다.</div>
+      <div class="timeline-img">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-japanese-colonial-era</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">전후</div>
+      <div class="timeline-period">세종로 — 경제 성장의 흔적</div>
+      <div class="timeline-desc">한국전쟁 이후 급속한 경제 성장으로 세종로의 너비를 53m에서 100m로 넓혔다. 차량 중심의 도시 구조 속에서 광화문 앞은 점차 사람보다 차를 위한 공간으로 변해갔다.</div>
+      <div class="timeline-img">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-sejongno-postwar-era</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2009</div>
+      <div class="timeline-period">광화문 광장 — 중앙 분리대의 광장화</div>
+      <div class="timeline-desc">육조거리에 서서 광화문과 경복궁, 북악산을 한눈에 감상할 수 있게 하는 원 설계자의 의도에 역행하는 설계라는 비판을 바탕으로 중앙 분리대를 광화문 광장으로 변경. 광화문–육조거리–시청으로 이어지는 역사적 축선을 강조하였다.</div>
+      <div class="timeline-img">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-plaza-2009-opening</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NOW -->
+<section class="now-section" id="now">
+  <span class="section-eyebrow">02 — 지금의 광화문</span>
+  <h2 class="section-title">2022년 광화문 광장의 변화</h2>
+  <div class="divider"></div>
+
+  <div class="now-grid">
+    <div class="now-text">
+      <p>횡단보도를 통해서만 접근해야 하는 거대한 중앙분리대라는 비판을 전격적으로 수용하여, 광장을 세종로 서편으로 붙여서 세종문화회관 및 정부청사와 연결하게 재조성하였다.</p>
+      <p>2022 광화문 광장 개편의 핵심과제는 역사적 가치와 미래적 도시 경관의 통합, 광장과 대로의 창의적 결합, 역사/시민 광장의 통합적 정체성 확보, 공간적 구상범위와 한국적 자연관의 확장, 일상과 비일상 기능의 조화 및 유연한 공간 계획이었다.</p>
+      <p>설계공모 당선안((주)CA조경기술사)은 도시적 역사적 축을 강렬히 형성하며, 비워진 공간에 광장에서 일어날 수 있는 모든 행위를 담고자 했다.</p>
+
+      <div class="reform-list">
+        <div class="reform-item">
+          <span class="reform-num">①</span>
+          <div class="reform-text">
+            <strong>동측 접근성 한계</strong>
+            광장 동측 차로가 7~9차로로 확장돼 동·서 보행 연결이 비대칭적이다. 서측은 광장과 바로 연결되지만 동측은 여전히 넓은 차도를 건너야 한다.
+          </div>
+        </div>
+        <div class="reform-item">
+          <span class="reform-num">②</span>
+          <div class="reform-text">
+            <strong>규모 대비 밀도 부족</strong>
+            557m × 60m로 길게 늘어져 일상 점유가 분산되고 공허감이 생기기 쉽다. 규모 대비 프로그램·그늘·좌석 밀도가 여전히 부족하다.
+          </div>
+        </div>
+        <div class="reform-item">
+          <span class="reform-num">③</span>
+          <div class="reform-text">
+            <strong>기능적 조화 미흡</strong>
+            집회/행사/일상 체류 간 요구가 충돌하고 있다. 영역별 명확한 계획과 가변 인프라가 부족하여 기능적 조화에 미흡하다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="now-image-main">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-plaza-2022-redesign-aerial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section class="goals-section" id="goals">
+  <span class="section-eyebrow">03 — 도시개발 목표</span>
+  <h2 class="section-title">우리가 꿈꾸는 광화문 광장</h2>
+  <div class="divider"></div>
+
+  <div class="goals-grid">
+    <div class="goal-card">
+      <span class="goal-icon">Goal 01</span>
+      <h3 class="goal-title">걷기 좋은 광장</h3>
+      <p class="goal-desc">기존 광화문 광장은 많은 변화를 거쳐왔지만, 여전히 사람들이 편히 걷기 좋은 광장은 아닙니다. 이러한 광화문 광장이 사람들이 편히 걷기 좋은 광장이 되기 위해 본 사업은 시작되었습니다.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-icon">Goal 02</span>
+      <h3 class="goal-title">일상적 치유의 광장</h3>
+      <p class="goal-desc">광화문 광장은 늘 국가적 상징, 정치적 집회의 장소로 기능해왔습니다. 그러나 정작 이 넓은 공간들을 쉼으로 마주하긴 쉽지 않았습니다. 사람들이 좀 더 편히 일상을 보내고, 진정한 쉼을 누릴 수 있는 광장이 되고자 합니다.</p>
+    </div>
+    <div class="goal-card">
+      <span class="goal-icon">Goal 03</span>
+      <h3 class="goal-title">문화를 즐기는 광장</h3>
+      <p class="goal-desc">사람들이 어느 자리에 머무르려면, 그 이유가 있어야 합니다. 광화문 광장에는 상업적 시설도, 문화적 시설도 충분하지 않습니다. 사람들에게 더 많은 즐길거리를 제공하며 머물기 쉬울 뿐만 아니라, 언제든 머물다 가고 싶은 광장을 만들고자 합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL: 4분할 -->
+<section class="quad-section" id="proposal">
+  <span class="section-eyebrow">04 — 앞으로의 광화문</span>
+  <h2 class="section-title">4분할 광장</h2>
+  <div class="divider"></div>
+
+  <p style="font-size:14px; color:var(--mid); line-height:1.9; max-width:700px; margin-bottom:32px;">
+    타 광장에 비해 광화문 광장 인근은 주변 상권이 활성화되어 있지 않습니다. 더불어 광화문 광장은 타 광장에 비해 너무나도 큰 스케일을 가지고 있습니다. 서측 상권 활성화 및 분할된 크기로 사람들이 보다 쉽게 광장을 점유할 수 있도록 커다란 광장을 4개로 분할합니다. 그리고 각각의 광장은 그저 크기만 나누는 것이 아닌, 각각의 목적성을 부여해 사람들이 머무를 이유를 제공합니다.
+  </p>
+
+  <div class="quad-img">
+    <div class="img-label img-label-dark">이미지</div>
+    <span class="img-tag-en">gwanghwamun-4zone-division-diagram</span>
+  </div>
+
+  <div class="sub-sections">
+    <div class="sub-section-item">
+      <span class="sub-tag">Zone A</span>
+      <div class="sub-name">광화문 광장</div>
+      <p class="sub-desc">역사적 축선을 간직한 상징 광장. 국가적 행사와 대규모 집회를 수용하는 열린 공간.</p>
+    </div>
+    <div class="sub-section-item">
+      <span class="sub-tag">Zone B</span>
+      <div class="sub-name">문화의 광장</div>
+      <p class="sub-desc">세종대왕상·세종문화회관을 중심으로 역사적·문화적 콘텐츠가 밀집된 구역. 지하 문화공간으로 연결.</p>
+    </div>
+    <div class="sub-section-item">
+      <span class="sub-tag">Zone C</span>
+      <div class="sub-name">선큰 광장</div>
+      <p class="sub-desc">지하공간으로의 자연스러운 전이를 유도하는 선큰 구조. 심리적 안정감과 채광을 동시에 확보.</p>
+    </div>
+    <div class="sub-section-item">
+      <span class="sub-tag">Zone D</span>
+      <div class="sub-name">웰니스 광장</div>
+      <p class="sub-desc">러닝 트랙과 자전거 도로, 웰니스 복합 쇼핑몰이 어우러지는 일상적 체류의 거점.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UNDERGROUND -->
+<section class="underground-section" id="underground">
+  <span class="section-eyebrow">05 — 지하화</span>
+  <h2 class="section-title">지하를 통한 연결의 확장</h2>
+  <div class="divider"></div>
+
+  <div class="underground-grid">
+    <div class="underground-text">
+      <p>기존 광화문 광장에는 많은 지하공간이 존재합니다. 그럼에도 불구하고 사람들은 이를 쉽게 인지하지 못하며, 기존 지하공간이 가지고 있는 가능성은 지극히 낮게 평가되고 있습니다.</p>
+      <p>더불어 지하공간을 통해 사람들이 이동할 수 있는 영역을 확장하게 되며, 자연스럽게 차도로 인해 단절되어 있던 동측 상권과의 연결성을 가져옵니다.</p>
+      <div class="img-box img-box-mid" style="margin:24px 0;">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-road-disconnection-diagram</span>
+      </div>
+      <p>광화문 광장은 서측보다 동측 상권이 더 많은 확장 가능성을 가지고 있는 곳입니다. 따라서 이러한 계획을 통해 보다 많은 인구가 광화문 광장을 기점으로 유출되고 유입될 수 있습니다.</p>
+      <p>이 지하화 계획에는 단순히 지하로의 통로를 확장하는 것을 의미하지만은 않습니다. 지하의 통로들은 단순한 통로가 아닌, 다양한 문화시설 및 상업시설로 채워집니다. 광장이 생존하기 위해서는 수많은 상업시설이 공존해야 합니다.</p>
+    </div>
+    <div>
+      <div class="img-box img-box-tall">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-underground-expansion-map</span>
+      </div>
+      <div class="img-box img-box-tall" style="margin-top:16px;">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-underground-cultural-commercial-rendering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUNKEN -->
+<section class="sunken-section" id="sunken">
+  <span class="section-eyebrow">06 — 선큰 광장</span>
+  <h2 class="section-title">지하로의 자연스러운 전이</h2>
+  <div class="divider"></div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+    <div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
+        일반적으로 지하공간은 사람들에게 부정적인 인식을 불러올 가능성을 갖고 있습니다. 어떻게 이러한 지하공간으로 유입되는지가 중요합니다.
+      </p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
+        큰 차도와 같은 레벨을 유지하는 보행은 사람들에게 심리적 압도감과 불안감을 가져올 수밖에 없습니다. 이러한 문제점들을 해결하고자, 4개로 분할된 광장 중 하나의 광장에 지하로 진입할 수 있는 커다란 선큰 광장을 선보입니다.
+      </p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9;">
+        이를 통해 사람들은 보다 안정적으로 지하공간에 접근하며, 지하화 계획과 동시에 지상의 광장도 보다 생동감 있게 활성화됩니다. 록펠러 플라자와 같이 선큰 광장은 레벨차이로 주변의 차량 소음으로부터 보호받는 느낌을 주며 'Human Scale'의 핵심적인 쉼터가 될 수 있습니다.
+      </p>
+    </div>
+    <div>
+      <div class="img-box" style="height:400px;">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-sunken-plaza-rendering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GREEN -->
+<section class="green-section" id="green">
+  <span class="section-eyebrow">07 — 녹지 분할</span>
+  <h2 class="section-title">분산된 녹지의 재배치</h2>
+  <div class="divider"></div>
+
+  <div class="green-grid">
+    <div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
+        광화문 광장이 2022년 개편되며, 많은 녹지가 조성되었으나, 그럼에도 불구하고 여전히 녹지가 분산되어 분포되어 있지 않다는 문제점을 갖고 있습니다.
+      </p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
+        녹지는 서측에 편향되어 있고 크게 뭉쳐져 있으며, 이에 의해 자연스럽게 권의적인 공터가 형성되어 있습니다. 이는 원경 조망에는 유리할 수 있으나 사람들이 '일상 속 쉼터'라고 느끼기에는 적합하지 않습니다.
+      </p>
+      <p style="font-size:14px; color:var(--mid); line-height:1.9;">
+        이러한 문제점을 해결하기 위해 본 프로젝트에서는 기존의 녹지에 녹지를 확충하는 것에 더해 한쪽에만 치우친 광화문 광장의 녹지를 다양한 구역에 분할하고자 합니다.
+      </p>
+    </div>
+    <div>
+      <div class="img-box" style="height:400px;">
+        <div class="img-label img-label-dark">이미지</div>
+        <span class="img-tag-en">gwanghwamun-greenery-before-after-diagram</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE AXIS -->
+<section class="culture-section" id="culture">
+  <span class="section-eyebrow">08 — 문화의 축 형성</span>
+  <h2 class="section-title">새로운 가로 방향의 축</h2>
+  <div class="divider"></div>
+
+  <p style="font-size:14px; color:var(--mid); line-height:1.9; max-width:700px; margin-bottom:32px;">
+    기존의 외교부 및 주한미군대사관 이전과 교보문고가 아닌 새로운 상업시설의 등장은 광화문 광장에 더 많은 가능성을 가져다 줍니다. 기존 외교부와 주한미군대사관이 존재하는 위치에 문화예술 프로그램과 상업시설이 공존하는 새로운 메스가 배치됩니다.
+  </p>
+  <p style="font-size:14px; color:var(--mid); line-height:1.9; max-width:700px; margin-bottom:48px;">
+    이는 사람들을 흡수하며, 1층의 상업시설들을 통해 광장 공간의 불충분한 상업시설을 충족시키고 그늘을 형성합니다. 그리고 마주보는 두 메스는 광화문 광장에 존재하지 않던 새로운 가로 방향의 축을 형성합니다. 세종문화회관과 대한민국 역사박물관이라는 두 기관이 광장을 관통하여 연결되면, 예술 소비층과 대중적 문화라는 다층적 문화 스펙트럼이 광장 한복판에 형성됩니다.
+  </p>
+
+  <div class="culture-grid">
+    <div class="img-box" style="height:320px;">
+      <div class="img-label img-label-dark">이미지</div>
+      <span class="img-tag-en">gwanghwamun-new-cultural-axis-diagram</span>
+    </div>
+    <div class="img-box" style="height:320px;">
+      <div class="img-label img-label-dark">이미지</div>
+      <span class="img-tag-en">gwanghwamun-new-mass-building-rendering</span>
+    </div>
+  </div>
+</section>
+
+<!-- WELLNESS -->
+<section class="wellness-section" id="wellness">
+  <span class="section-eyebrow">09 — 웰니스를 수용하는 광장</span>
+  <h2 class="section-title">건강한 문화의 거점</h2>
+  <div class="divider"></div>
+
+  <div class="wellness-content">
+    <p>시민들을 위해 거대한 광화문 광장은 또 어떻게 사용될 수 있을까요? 건강한 문화를 지향하는 오늘날의 트렌드를 따라 웰니스적 요소들이 강화된 모습으로 다시 태어납니다.</p>
+    <p>기존 교보문고가 철거함에 따라 새로운 거점을 필요로 하고 있는 광화문 광장에는 웰니스 복합 쇼핑몰이 들어서게 됩니다. 해당 쇼핑몰에서는 건강과 관련된 다양한 상품들을 구매할 수 있을 뿐만 아니라 런닝 등에 필요한 다양한 장비까지 대여가 가능합니다.</p>
+    <p>이러한 웰니스 문화를 선도하는 광화문 광장의 변화된 모습을 통해 내국인들뿐만 아니라 외국인들도 대한민국이 선도 중인 웰니스 문화를 여기서 만나볼 수 있습니다. 더불어 광화문 광장의 넓고 기다란 지형조건을 활용해 러닝 트랙이 형성됩니다. 러닝 트랙과 함께 자전거 도로, 도보가 명확하게 형성되며 보다 안정적인 보행환경을 형성하고, 많은 사람들이 다양한 방식으로 광화문 광장을 점유할 수 있게 됩니다.</p>
+  </div>
+
+  <div class="wellness-img-row">
+    <div class="wellness-img tall">
+      <div class="img-label img-label-light">이미지</div>
+      <span class="img-tag-en" style="color:#555;">gwanghwamun-wellness-shopping-mall-rendering</span>
+    </div>
+    <div>
+      <div class="wellness-img wide">
+        <div class="img-label img-label-light">이미지</div>
+        <span class="img-tag-en" style="color:#555;">gwanghwamun-running-track-cycling-path-map</span>
+      </div>
+      <div class="wellness-img wide" style="margin-top:20px; height:200px;">
+        <div class="img-label img-label-light">이미지</div>
+        <span class="img-tag-en" style="color:#555;">gwanghwamun-wellness-running-event</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section" id="video">
+  <span class="section-eyebrow">10 — 홍보 영상</span>
+  <h2 class="section-title" style="text-align:center;">바뀐 광화문 광장</h2>
+
+  <div class="video-box">
+    <div class="play-icon"></div>
+    <div class="img-label img-label-dark" style="margin-top:16px;">영상</div>
+    <span class="img-tag-en">gwanghwamun-plaza-promotional-video</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-title">광화문 광장 개편 제안</div>
+    <div class="footer-team">
+      21011027 김수겸 &nbsp;·&nbsp; 21011017 이현호 &nbsp;·&nbsp; 21011077 임신엽<br>
+      22011115 박진철 &nbsp;·&nbsp; 23011102 왕나경
+    </div>
+  </div>
+  <div class="footer-right">
+    공간 재구성을 통한<br>
+    광화문 광장 활성화 방안
+  </div>
+</footer>
+
+</body>
+</html>
