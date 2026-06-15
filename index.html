@@ -892,6 +892,83 @@ footer{
   }
 
 }
+  /* =========================
+   PREMIUM RED CURSOR
+========================= */
+
+body{
+  cursor:none;
+}
+
+.custom-cursor{
+  position:fixed;
+  width:26px;
+  height:26px;
+  border:1.5px solid var(--red);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99999;
+
+  left:0;
+  top:0;
+
+  transform:translate(-50%,-50%);
+  transition:
+    width .3s ease,
+    height .3s ease,
+    background .3s ease,
+    border .3s ease,
+    opacity .3s ease;
+}
+
+.custom-cursor::after{
+  content:'';
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--red);
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+}
+
+.custom-cursor.hover{
+  width:60px;
+  height:60px;
+  background:rgba(192,57,43,0.08);
+}
+
+.custom-cursor.click{
+  width:18px;
+  height:18px;
+}
+
+/* 잔상 */
+
+.cursor-trail{
+  position:fixed;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(192,57,43,0.18);
+
+  pointer-events:none;
+  z-index:99998;
+
+  left:0;
+  top:0;
+
+  transform:translate(-50%,-50%);
+}
+
+/* 섹션 진입 시 강조 */
+
+.section-active .custom-cursor{
+  border-color:#D35400;
+}
 </style>
 </head>
 <body>
@@ -1264,6 +1341,91 @@ footer{
     광화문 광장 활성화 방안
   </div>
 </footer>
+<div class="custom-cursor"></div>
+<div class="cursor-trail"></div>
+  <script>
 
+const cursor = document.querySelector('.custom-cursor');
+const trail = document.querySelector('.cursor-trail');
+
+let mouseX = 0;
+let mouseY = 0;
+
+let trailX = 0;
+let trailY = 0;
+
+document.addEventListener('mousemove',(e)=>{
+
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+
+});
+
+function animateTrail(){
+
+  trailX += (mouseX - trailX) * 0.12;
+  trailY += (mouseY - trailY) * 0.12;
+
+  trail.style.left = trailX + 'px';
+  trail.style.top = trailY + 'px';
+
+  requestAnimationFrame(animateTrail);
+}
+
+animateTrail();
+
+/* hover */
+
+const hoverTargets = document.querySelectorAll(
+'a, button, .goal-card, .timeline-item, .sub-section-item'
+);
+
+hoverTargets.forEach(el=>{
+
+  el.addEventListener('mouseenter',()=>{
+    cursor.classList.add('hover');
+  });
+
+  el.addEventListener('mouseleave',()=>{
+    cursor.classList.remove('hover');
+  });
+
+});
+
+/* click animation */
+
+document.addEventListener('mousedown',()=>{
+  cursor.classList.add('click');
+});
+
+document.addEventListener('mouseup',()=>{
+  cursor.classList.remove('click');
+});
+
+/* 섹션 감지 */
+
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll',()=>{
+
+  sections.forEach(section=>{
+
+    const rect = section.getBoundingClientRect();
+
+    if(
+      rect.top < window.innerHeight * 0.4 &&
+      rect.bottom > window.innerHeight * 0.4
+    ){
+      document.body.classList.add('section-active');
+    }
+
+  });
+
+});
+
+</script>
 </body>
 </html>
