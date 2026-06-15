@@ -340,10 +340,12 @@
     margin-top: 48px;
   }
 
-  .goal-card {
-    background: var(--dark);
-    padding: 40px 32px;
-  }
+.goal-card {
+  background: var(--dark);
+  padding: 40px 32px;
+  transition: all .35s ease;
+  cursor: pointer;
+}
 
   .goal-icon {
     font-size: 11px;
@@ -968,6 +970,33 @@ body{
 
 .section-active .custom-cursor{
   border-color:#D35400;
+}
+  /* =========================
+   GOAL CARD HOVER EFFECT
+========================= */
+
+.goal-card:hover{
+  background: rgba(192,57,43,0.12);
+  box-shadow: inset 0 0 0 1px rgba(192,57,43,0.5);
+}
+
+.goal-card:hover .goal-icon{
+  color:#FFFFFF;
+  letter-spacing:0.2em;
+}
+
+.goal-card:hover .goal-title{
+  color:var(--red);
+}
+
+.goal-card:hover .goal-desc{
+  color:#CCCCCC;
+}
+
+/* 살짝 위로 뜨는 효과 */
+
+.goal-card:hover{
+  transform:translateY(-6px);
 }
 </style>
 </head>
