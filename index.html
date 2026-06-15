@@ -238,18 +238,20 @@
     line-height: 1.8;
   }
 
-  .timeline-img {
-    width: 100%;
-    height: 160px;
-    background: #E5E0D8;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-  }
+.timeline-img{
+  width:100%;
+  height:220px;
+  margin-top:20px;
+  overflow:hidden;
+  background:none;
+}
 
+.timeline-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
   /* NOW SECTION */
   .now-section {
     background: var(--bg2);
@@ -623,6 +625,12 @@
     .wellness-img-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 24px; align-items: flex-start; }
   }
+  .timeline-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 </style>
 </head>
 <body>
@@ -662,49 +670,63 @@
   <h2 class="section-title">과거에서 현재까지</h2>
   <div class="divider"></div>
 
-  <div class="timeline">
+<div class="timeline">
 
-    <div class="timeline-item">
-      <div class="timeline-year">조선</div>
-      <div class="timeline-period">육조거리 — 행정의 중심</div>
-      <div class="timeline-desc">조선시대 육조거리로 시작한 광화문 광장. 당시 관아들이 배치되었던 큰 길로, 행정적인 중심에 위치하였던 거리였다. 경복궁과 한양의 행정 심장부를 잇는 상징적 공간이었다.</div>
-      <div class="timeline-img">
-        <div class="img-label img-label-dark">이미지</div>
-        <span class="img-tag-en">gwanghwamun-joseon-period-historical</span>
-      </div>
+  <div class="timeline-item">
+    <div class="timeline-year">조선</div>
+    <div class="timeline-period">육조거리 — 행정의 중심</div>
+    <div class="timeline-desc">
+      조선시대 육조거리로 시작한 광화문 광장. 당시 관아들이 배치되었던 큰 길로,
+      행정적인 중심에 위치하였던 거리였다. 경복궁과 한양의 행정 심장부를 잇는
+      상징적 공간이었다.
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-year">일제<br>강점기</div>
-      <div class="timeline-period">광화문통 — 거리의 확장</div>
-      <div class="timeline-desc">조선총독부를 지으며 '광화문통(光化門通)'으로 변경되면서 거리를 확장하였다 (세종로의 원형). 축선을 강조하기 위해 도로 중앙에 은행나무를 일렬로 배치해 양방향을 분리하였다.</div>
-      <div class="timeline-img">
-        <div class="img-label img-label-dark">이미지</div>
-        <span class="img-tag-en">gwanghwamun-japanese-colonial-era</span>
-      </div>
+    <div class="timeline-img">
+      <img src="images/history-joseon.jpg" alt="조선시대 육조거리">
     </div>
-
-    <div class="timeline-item">
-      <div class="timeline-year">전후</div>
-      <div class="timeline-period">세종로 — 경제 성장의 흔적</div>
-      <div class="timeline-desc">한국전쟁 이후 급속한 경제 성장으로 세종로의 너비를 53m에서 100m로 넓혔다. 차량 중심의 도시 구조 속에서 광화문 앞은 점차 사람보다 차를 위한 공간으로 변해갔다.</div>
-      <div class="timeline-img">
-        <div class="img-label img-label-dark">이미지</div>
-        <span class="img-tag-en">gwanghwamun-sejongno-postwar-era</span>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-year">2009</div>
-      <div class="timeline-period">광화문 광장 — 중앙 분리대의 광장화</div>
-      <div class="timeline-desc">육조거리에 서서 광화문과 경복궁, 북악산을 한눈에 감상할 수 있게 하는 원 설계자의 의도에 역행하는 설계라는 비판을 바탕으로 중앙 분리대를 광화문 광장으로 변경. 광화문–육조거리–시청으로 이어지는 역사적 축선을 강조하였다.</div>
-      <div class="timeline-img">
-        <div class="img-label img-label-dark">이미지</div>
-        <span class="img-tag-en">gwanghwamun-plaza-2009-opening</span>
-      </div>
-    </div>
-
   </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">일제<br>강점기</div>
+    <div class="timeline-period">광화문통 — 거리의 확장</div>
+    <div class="timeline-desc">
+      조선총독부를 지으며 광화문통으로 변경되면서 거리를 확장하였다.
+      축선을 강조하기 위해 도로 중앙에 은행나무를 일렬로 배치해
+      양방향을 분리하였다.
+    </div>
+
+    <div class="timeline-img">
+      <img src="images/history-colonial.jpg" alt="일제강점기 광화문통">
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">전후</div>
+    <div class="timeline-period">세종로 — 경제 성장의 흔적</div>
+    <div class="timeline-desc">
+      한국전쟁 이후 급속한 경제 성장으로 세종로의 너비를 53m에서 100m로 넓혔다.
+      차량 중심의 도시 구조 속에서 광화문 앞은 점차 사람보다 차를 위한 공간으로 변해갔다.
+    </div>
+
+    <div class="timeline-img">
+      <img src="images/history-postwar.jpg" alt="전후 세종로">
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">2009</div>
+    <div class="timeline-period">광화문 광장 — 중앙 분리대의 광장화</div>
+    <div class="timeline-desc">
+      중앙 분리대를 광화문 광장으로 변경하며 광화문–육조거리–시청으로 이어지는
+      역사적 축선을 강조하였다.
+    </div>
+
+    <div class="timeline-img">
+      <img src="images/history-2009.jpg" alt="2009 광화문 광장">
+    </div>
+  </div>
+
+</div>
 </section>
 
 <!-- NOW -->
