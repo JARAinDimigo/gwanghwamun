@@ -31,7 +31,6 @@
     line-height: 1.75;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -41,9 +40,9 @@
     justify-content: space-between;
     padding: 0 60px;
     height: 64px;
-    background: rgba(255,255,255,0.95);
-    border-bottom: 0.5px solid var(--border);
-    backdrop-filter: blur(8px);
+    background: var(--red); /* 배경을 포인트 컬러인 붉은색으로 변경 */
+    border-bottom: none; /* 붉은색 배경에 어울리지 않는 하단 선 제거 */
+    backdrop-filter: none; /* 불투명한 색상이므로 블러 효과 제외 */
   }
 
   .nav-logo {
@@ -51,8 +50,10 @@
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 0.05em;
-    color: var(--dark);
+    color: #FFFFFF; /* 로고 글씨색을 흰색으로 변경 */
     text-decoration: none;
+    border: 1px solid #FFFFFF; /* 보더가 있을 경우 흰색으로 조화롭게 맞춤 */
+    padding: 4px 8px; /* 테두리와 글씨 사이 여백 확보 */
   }
 
   .nav-menu {
@@ -65,13 +66,15 @@
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.08em;
-    color: var(--mid);
+    color: rgba(255, 255, 255, 0.7); /* 평소 메뉴 글씨는 부드러운 연한 흰색 */
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s;
   }
 
-  .nav-menu a:hover { color: var(--dark); }
+  .nav-menu a:hover { 
+    color: #FFFFFF; /* 마우스를 올렸을 때 선명한 순백색으로 강조 */
+  }
 
   /* HERO */
   .hero {
