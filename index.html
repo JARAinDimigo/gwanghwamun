@@ -631,6 +631,267 @@
   object-fit:cover;
   display:block;
 }
+/* ==========================
+   RESPONSIVE IMPROVEMENT
+   ========================== */
+
+body{
+  overflow-x:hidden;
+}
+
+/* 전체 폭 제한 */
+section{
+  padding-left:max(32px, calc((100vw - 1400px)/2));
+  padding-right:max(32px, calc((100vw - 1400px)/2));
+}
+
+/* HERO */
+
+.hero{
+  min-height:100svh;
+}
+
+.hero-img-box{
+  width:48%;
+}
+
+.hero-content{
+  max-width:560px;
+}
+
+.hero-title{
+  font-size:clamp(44px, 6vw, 72px);
+}
+
+/* TIMELINE */
+
+.timeline{
+  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+}
+
+.timeline-item{
+  padding:40px;
+}
+
+.timeline-img{
+  width:100%;
+  aspect-ratio:16/10;
+  height:auto;
+  margin-top:24px;
+  overflow:hidden;
+}
+
+.timeline-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* NOW */
+
+.now-grid{
+  grid-template-columns:1.2fr 0.8fr;
+  gap:80px;
+}
+
+.now-image-main{
+  width:100%;
+  aspect-ratio:4/5;
+  height:auto;
+  overflow:hidden;
+  border-radius:4px;
+}
+
+.now-image-main img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* GOALS */
+
+.goals-grid{
+  gap:1px;
+}
+
+.goal-card{
+  min-height:320px;
+}
+
+/* 4분할 메인 이미지 */
+
+.quad-img{
+  width:100%;
+  aspect-ratio:16/9;
+  height:auto;
+}
+
+/* 공통 이미지 */
+
+.img-box{
+  overflow:hidden;
+}
+
+.img-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* 지하화 */
+
+.img-box-tall{
+  aspect-ratio:4/5;
+  height:auto;
+}
+
+.img-box-mid{
+  aspect-ratio:4/3;
+  height:auto;
+}
+
+.img-box-short{
+  aspect-ratio:16/9;
+  height:auto;
+}
+
+/* 문화축 */
+
+.culture-grid{
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+
+/* 웰니스 */
+
+.wellness-img.tall{
+  aspect-ratio:4/5;
+  height:auto;
+}
+
+.wellness-img.wide{
+  aspect-ratio:16/9;
+  height:auto;
+}
+
+/* 영상 */
+
+.video-box{
+  aspect-ratio:16/9;
+  height:auto;
+}
+
+/* FOOTER */
+
+footer{
+  padding-left:max(32px, calc((100vw - 1400px)/2));
+  padding-right:max(32px, calc((100vw - 1400px)/2));
+}
+
+/* ==========================
+   TABLET
+   ========================== */
+
+@media (max-width:1200px){
+
+  .hero-img-box{
+    width:45%;
+  }
+
+  .now-grid,
+  .underground-grid,
+  .green-grid{
+    gap:48px;
+  }
+
+}
+
+/* ==========================
+   MOBILE
+   ========================== */
+
+@media (max-width:900px){
+
+  section{
+    padding:80px 24px;
+  }
+
+  nav{
+    padding:0 20px;
+  }
+
+  .nav-menu{
+    gap:16px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:120px 24px 80px;
+  }
+
+  .hero-img-box{
+    display:none;
+  }
+
+  .hero-title{
+    font-size:48px;
+  }
+
+  .timeline{
+    grid-template-columns:1fr;
+  }
+
+  .timeline-item{
+    border-right:none;
+    padding:32px 0;
+  }
+
+  .now-grid,
+  .underground-grid,
+  .green-grid,
+  .culture-grid{
+    grid-template-columns:1fr;
+  }
+
+  .sub-sections{
+    grid-template-columns:1fr;
+  }
+
+  .goals-grid{
+    grid-template-columns:1fr;
+  }
+
+  .wellness-img-row{
+    grid-template-columns:1fr;
+  }
+
+  footer{
+    padding:40px 24px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+}
+
+/* ==========================
+   LARGE MONITOR
+   ========================== */
+
+@media (min-width:1800px){
+
+  body{
+    font-size:16px;
+  }
+
+  .section-title{
+    font-size:52px;
+  }
+
+  .timeline-item{
+    padding:56px;
+  }
+
+}
 </style>
 </head>
 <body>
