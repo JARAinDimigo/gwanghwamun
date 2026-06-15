@@ -482,9 +482,56 @@
 
   .img-box + .img-box { margin-top: 16px; }
 
-  /* SUNKEN */
+/* SUNKEN */
   .sunken-section {
     background: var(--bg2);
+  }
+
+  /* 텍스트와 이미지를 분할하는 그리드 컨테이너 */
+  .sunken-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* PC에서 좌측 글, 우측 이미지 50% 분할 */
+    gap: 80px;
+    align-items: start;
+  }
+
+  .sunken-text-box p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .sunken-text-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 이미지를 감싸는 카드 박스 */
+  .sunken-img-card {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 직사각형태의 안정적인 화면비 제공 */
+    overflow: hidden;
+    background: #E0DDD8;
+  }
+
+  /* 내부 PNG 이미지 최적화 선언 */
+  .sunken-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 영역에 가득 차게 맞춤 */
+    display: block;
+  }
+
+  /* 반응형 분기점: 화면 너비가 900px 이하일 때 (모바일 및 태블릿) */
+  @media (max-width: 900px) {
+    .sunken-grid-container {
+      grid-template-columns: 1fr; /* 1열로 변경하여 이미지가 아래로 자연스럽게 배치됨 */
+      gap: 40px;
+    }
+
+    .sunken-img-card {
+      aspect-ratio: 16 / 9; /* 모바일 기기 스크린에 최적화된 와이드 비율로 자동 전환 */
+    }
   }
 
   /* GREEN */
@@ -1328,22 +1375,15 @@ body{
   <h2 class="section-title">지하로의 자연스러운 전이</h2>
   <div class="divider"></div>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
-    <div>
-      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
-        일반적으로 지하공간은 사람들에게 부정적인 인식을 불러올 가능성을 갖고 있습니다. 어떻게 이러한 지하공간으로 유입되는지가 중요합니다.
-      </p>
-      <p style="font-size:14px; color:var(--mid); line-height:1.9; margin-bottom:20px;">
-        큰 차도와 같은 레벨을 유지하는 보행은 사람들에게 심리적 압도감과 불안감을 가져올 수밖에 없습니다. 이러한 문제점들을 해결하고자, 4개로 분할된 광장 중 하나의 광장에 지하로 진입할 수 있는 커다란 선큰 광장을 선보입니다.
-      </p>
-      <p style="font-size:14px; color:var(--mid); line-height:1.9;">
-        이를 통해 사람들은 보다 안정적으로 지하공간에 접근하며, 지하화 계획과 동시에 지상의 광장도 보다 생동감 있게 활성화됩니다. 록펠러 플라자와 같이 선큰 광장은 레벨차이로 주변의 차량 소음으로부터 보호받는 느낌을 주며 'Human Scale'의 핵심적인 쉼터가 될 수 있습니다.
-      </p>
+    <div class="sunken-grid-container">
+    <div class="sunken-text-box">
+      <p>일반적으로 지하공간은 사람들에게 부정적인 인식을 불러올 가능성을 갖고 있습니다. 어떻게 이러한 지하공간으로 유입되는지가 중요합니다.</p>
+      <p>큰 차도와 같은 레벨을 유지하는 보행은 사람들에게 심리적 압도감과 불안감을 가져올 수밖에 없습니다. 이러한 문제점들을 해결하고자, 4개로 분할된 광장 중 하나의 광장에 지하로 진입할 수 있는 커다란 선큰 광장을 선보입니다.</p>
+      <p>이를 통해 사람들은 보다 안정적으로 지하공간에 접근하며, 지하화 계획과 동시에 지상의 광장도 보다 생동감 있게 활성화됩니다. 록펠러 플라자와 같이 선큰 광장은 레벨차이로 주변의 차량 소음으로부터 보호받는 느낌을 주며 'Human Scale'의 핵심적인 쉼터가 될 수 있습니다.</p>
     </div>
     <div>
-      <div class="img-box" style="height:400px;">
-        <div class="img-label img-label-dark">이미지</div>
-        <span class="img-tag-en">gwanghwamun-sunken-plaza-rendering</span>
+            <div class="sunken-img-card">
+        <img src="gwanghwamun-sunken-plaza.png" alt="광화문 광장 지하 진입 선큰 광장 렌더링">
       </div>
     </div>
   </div>
