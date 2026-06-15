@@ -566,31 +566,51 @@
     margin-bottom: 0;
   }
 
-  /* 이미지를 감싸는 카드 박스 */
-  .sunken-img-card {
+/* 우측 이미지 2장을 내부적으로 정렬하는 컨테이너 */
+  .sunken-img-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 기본적으로 위아래 배치하여 시각적 호흡 확보 */
+    gap: 20px; /* 이미지 사이의 여백 */
     width: 100%;
-    aspect-ratio: 4 / 3; /* 직사각형태의 안정적인 화면비 제공 */
-    overflow: hidden;
-    background: #E0DDD8;
   }
 
-  /* 내부 PNG 이미지 최적화 선언 */
+  /* 각각의 선큰 이미지 카드 박스 */
+  .sunken-img-card {
+    width: 100%;
+    aspect-ratio: 16 / 10; /* 2장의 이미지가 배치되므로 세련된 와이드 황금비율로 조정 */
+    overflow: hidden;
+    background: #E0DDD8;
+    border: 1px solid var(--border);
+  }
+
+  /* 내부 PNG 이미지 비율 왜곡 방지 */
   .sunken-img-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 영역에 가득 차게 맞춤 */
+    object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
   }
 
-  /* 반응형 분기점: 화면 너비가 900px 이하일 때 (모바일 및 태블릿) */
+  /* 이미지 마우스 호버 시 은은한 확대 효과 */
+  .sunken-img-card:hover img {
+    transform: scale(1.02);
+  }
+
+  /* 반응형 분기점: 화면 너비가 900px 이하일 때 (태블릿 및 모바일) */
   @media (max-width: 900px) {
     .sunken-grid-container {
-      grid-template-columns: 1fr; /* 1열로 변경하여 이미지가 아래로 자연스럽게 배치됨 */
+      grid-template-columns: 1fr; /* 좌측 글, 우측 이미지 영역이 상하로 배치됨 */
       gap: 40px;
     }
 
+    .sunken-img-container {
+      grid-template-columns: 1fr; /* 모바일에서도 세로 배열 유지 */
+      gap: 16px;
+    }
+
     .sunken-img-card {
-      aspect-ratio: 16 / 9; /* 모바일 기기 스크린에 최적화된 와이드 비율로 자동 전환 */
+      aspect-ratio: 16 / 9; /* 모바일 화면 기기 스크린 규격에 맞추어 와이드하게 최적화 */
     }
   }
 
@@ -1495,8 +1515,14 @@ body{
       <p>이를 통해 사람들은 보다 안정적으로 지하공간에 접근하며, 지하화 계획과 동시에 지상의 광장도 보다 생동감 있게 활성화됩니다. 록펠러 플라자와 같이 선큰 광장은 레벨차이로 주변의 차량 소음으로부터 보호받는 느낌을 주며 'Human Scale'의 핵심적인 쉼터가 될 수 있습니다.</p>
     </div>
     <div>
-            <div class="sunken-img-card">
-        <img src="gwanghwamun-sunken-plaza.png" alt="광화문 광장 지하 진입 선큰 광장 렌더링">
+            <div>
+      <div class="sunken-img-container">
+        <div class="sunken-img-card">
+          <img src="gwanghwamun-sunken-plaza.png" alt="광화문 광장 지하 진입 선큰 광장 렌더링">
+        </div>
+        <div class="sunken-img-card">
+          <img src="gwanghwamun-sunken-concept.png" alt="선큰 광장 단면 개념도 및 Human Scale 참조">
+        </div>
       </div>
     </div>
   </div>
